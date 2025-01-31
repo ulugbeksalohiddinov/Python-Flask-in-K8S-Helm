@@ -118,8 +118,9 @@ https://github.com/buildwithdan/flask-crud
           - name: {{ .Release.Name }}-app
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
             imagePullPolicy: {{ .Values.image.pullPolicy }}
-            env:
-            {{- toYaml .Values.env | nindent 8 }}
+            envFrom:
+             - secretRef:
+                 name: {{ .Values.secretName }} 
             ports:
               - containerPort: {{ .Values.containerPort }}
             resources:
@@ -179,31 +180,17 @@ https://github.com/buildwithdan/flask-crud
 
     #Image
     image:
-      repository: ulugbekit94/fraud
+      repository: ulugbekit94/py
       tag: latest
       pullPolicy: IfNotPresent
       pullSecretName: my-pull-secret
 
     #Ports
-    containerPort: 1919
+    containerPort: 5000
 
-    #ENV-ConfigMap
-    env:
-    - name: DB_USERNAME
-      valueFrom:
-        secretKeyRef:
-          name: postgres-credentials
-          key: db.username
-    - name: DB_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: postgres-credentials
-          key: db.password
-    - name: DB_URL
-      valueFrom:
-        secretKeyRef:
-          name: postgres-credentials
-          key: db.url
+    #Secrets
+    secretName: mysec
+    
 
     #Service-Params
     servicePort: 80

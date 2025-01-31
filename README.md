@@ -204,6 +204,6 @@ https://github.com/buildwithdan/flask-crud
 
 **commond**
 
-helm template crud ./crud/ --set "application.reloader=true" --debug > py-app.yaml
+    helm template crud ./crud/ --set "application.reloader=true" --debug > py-app.yaml
 
-helm install crud ./crud/
+    helm install crud ./crud/

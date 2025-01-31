@@ -170,3 +170,46 @@ https://github.com/buildwithdan/flask-crud
             pathType: {{ .Values.pathType }}
     status:
       loadBalancer: {}
+
+**values.yaml**
+
+    #Replicas
+    replicaCount: 1
+    revisionHistoryLimit: 1
+
+    #Image
+    image:
+      repository: ulugbekit94/fraud
+      tag: latest
+      pullPolicy: IfNotPresent
+      pullSecretName: my-pull-secret
+
+    #Ports
+    containerPort: 1919
+
+    #ENV-ConfigMap
+    env:
+    - name: DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: postgres-credentials
+          key: db.username
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: postgres-credentials
+          key: db.password
+    - name: DB_URL
+      valueFrom:
+        secretKeyRef:
+          name: postgres-credentials
+          key: db.url
+
+    #Service-Params
+    servicePort: 80
+    #targetPort: 80
+    serviceType: ClusterIP
+
+    #Ingress-Params
+    domen: kubs.uz
+    pathType: Prefix

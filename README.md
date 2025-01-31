@@ -20,8 +20,8 @@
     RUN pipenv install
     # --deploy --ignore-pipfile
 
-   EXPOSE 5000 
-   # the port here doesnt mean anything.
+    EXPOSE 5000 
+    # the port here doesnt mean anything.
 
-   # Run flask when the container launches
-   CMD ["pipenv", "run", "flask", "--app", "api/app.py", "--debug", "run", "--host=0.0.0.0", "--port=5000"]
+    # Run flask when the container launches
+    CMD ["pipenv", "run", "flask", "--app", "api/app.py", "--debug", "run", "--host=0.0.0.0", "--port=5000"]

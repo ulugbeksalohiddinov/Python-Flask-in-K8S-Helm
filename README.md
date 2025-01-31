@@ -25,3 +25,12 @@
 
     # Run flask when the container launches
     CMD ["pipenv", "run", "flask", "--app", "api/app.py", "--debug", "run", "--host=0.0.0.0", "--port=5000"]
+
+**Write .env**
+
+    DB_HOST=${DB_HOSTS} 
+    DB_USERNAME=${DB_USERNAMES}
+    DB_NAME=${DB_NAMES}
+    DB_PASSWORD=${DB_PASSWORDS}
+    DB_SCHEMA=${DB_SCHEMAS}
+    DB_PORT=${DB_PORTS}

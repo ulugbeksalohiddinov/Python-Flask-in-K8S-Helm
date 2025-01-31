@@ -48,6 +48,38 @@
 **Create Secret in Kubernetes**
 
     kubectl create secret generic mysec --from-literal DB_PASSWORDS=Abs123 --from-literal DB_USERNAMES=ulugbek --from-literal DB_NAMES=dbpy --from-literal DB_SCHEMAS=project_flask_crud --from-literal DB_HOSTS=db --from-literal DB_PORTS=5432
+
+**Create Deployment in Kubernetes**
+
+     apiVersion: apps/v1
+     kind: Deployment
+     metadata:
+       creationTimestamp: null
+       labels:
+         app: crud
+       name: crud
+     spec:
+       replicas: 1
+       selector:
+         matchLabels:
+           app: crud
+       strategy: {}
+       template:
+         metadata:
+           creationTimestamp: null
+           labels:
+             app: crud
+         spec:
+           containers:
+           - image: ulugbekit94/py9
+             name: py-crud
+             envFrom:
+             - secretRef:
+                 name: mysec
+             ports:
+             - containerPort: 5000
+             resources: {}
+     status: {}
     
 
 

@@ -92,7 +92,7 @@ https://github.com/buildwithdan/flask-crud
    cd helm/crud
    helm create crud
 
-    **deployment.yaml**
+**deployment.yaml**
 
     apiVersion: apps/v1
     kind: Deployment

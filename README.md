@@ -34,3 +34,21 @@
     DB_PASSWORD=${DB_PASSWORDS}
     DB_SCHEMA=${DB_SCHEMAS}
     DB_PORT=${DB_PORTS}
+
+**Login DockerHub**
+    
+    docker login --username asdxxyy
+
+**Create docker image and push DockerHub**
+
+    docker build -t asdxxyy/py-flask .
+
+    docker pull asdxxyy/py-flask
+
+**Create Secret in Kubernetes**
+
+    kubectl create secret generic mysec --from-literal DB_PASSWORDS=Abs123 --from-literal DB_USERNAMES=ulugbek --from-literal DB_NAMES=dbpy --from-literal DB_SCHEMAS=project_flask_crud --from-literal DB_HOSTS=db --from-literal DB_PORTS=5432
+    
+
+
+

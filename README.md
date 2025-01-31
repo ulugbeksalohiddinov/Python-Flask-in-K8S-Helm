@@ -125,7 +125,8 @@ https://github.com/buildwithdan/flask-crud
             resources:
               {{- toYaml .Values.resources | nindent 10 }}
 
-    **service.yaml**
+
+**service.yaml**
 
     apiVersion: v1
     kind: Service

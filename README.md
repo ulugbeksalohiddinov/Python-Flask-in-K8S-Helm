@@ -125,3 +125,24 @@ https://github.com/buildwithdan/flask-crud
             resources:
               {{- toYaml .Values.resources | nindent 10 }}
 
+    **service.yaml**
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: {{ .Release.Name }}-srv
+      labels:
+        app: {{ .Release.Name }}-srv
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+    spec:
+      ports:
+      - port: {{ .Values.servicePort }}
+        protocol: TCP
+        targetPort: {{ .Values.containerPort }}
+      selector:
+        app: {{ .Release.Name }}-app
+      type: {{ .Values.serviceType }}
+    status:
+      loadBalancer: {}

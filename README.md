@@ -200,3 +200,10 @@ https://github.com/buildwithdan/flask-crud
     #Ingress-Params
     domen: kubs.uz
     pathType: Prefix
+
+
+**commond**
+
+helm template crud ./crud/ --set "application.reloader=true" --debug > py-app.yaml
+
+helm install crud ./crud/

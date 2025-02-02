@@ -120,8 +120,8 @@ https://github.com/buildwithdan/flask-crud
             image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
             imagePullPolicy: {{ .Values.image.pullPolicy }}
             envFrom:
-             - secretRef:
-                 name: {{ .Values.secretName }} 
+            - secretRef:
+                name: {{ .Values.secretName }} 
             ports:
               - containerPort: {{ .Values.containerPort }}
             resources:

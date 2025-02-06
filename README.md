@@ -75,7 +75,7 @@ https://github.com/buildwithdan/flask-crud
              app: crud
          spec:
            containers:
-           - image: ulugbekit94/py9
+           - image: asdxxyy/py-flask
              name: py-crud
              envFrom:
              - secretRef:
@@ -181,7 +181,7 @@ https://github.com/buildwithdan/flask-crud
 
     #Image
     image:
-      repository: ulugbekit94/py
+      repository: asdxxyy/py-flask
       tag: latest
       pullPolicy: IfNotPresent
       pullSecretName: my-pull-secret
